@@ -1,5 +1,11 @@
-const LoginScreen = () => {
-    return (<></>);
-}
+import {Text} from 'react-native';
 
-export  {LoginScreen};
+const LoginScreen = () => {
+  return (
+    <>
+      <Text>login Screen</Text>
+    </>
+  );
+};
+
+export {LoginScreen};
