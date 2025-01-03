@@ -5,16 +5,14 @@ import {styles} from './styles.ts';
 import {useContext} from 'react';
 import {ThemeContext} from '../../theme/ThemeContext.tsx';
 import {RoundedButton} from '../../components/roundedButton/RoundedButton.tsx';
+import AppScreens, {AppScreenProps} from '../../navigation/AppScreens.ts';
 
-export const HomeScreen = ({navigation}) => {
+type Props = AppScreenProps<AppScreens.HOME_SCREEN>;
+
+export const HomeScreen = ({navigation}: Props) => {
   const theme = useContext(ThemeContext);
   const globalStyles = useGlobalStyles();
   const homeScreenStyles = styles(theme);
-
-  const onLoginPress = () => {
-  };
-
-  const onSignUpPress = () => {};
 
   return (
     <View style={homeScreenStyles.homeScreen}>
@@ -28,13 +26,13 @@ export const HomeScreen = ({navigation}) => {
       <View style={homeScreenStyles.loginContainer}>
         <RoundedButton
           title={'Log In'}
-          onPress={onSignUpPress}
+          onPress={() => navigation.navigate(AppScreens.LOG_IN_SCREEN)}
           buttonStyle={homeScreenStyles.loginButton}
           textStyle={homeScreenStyles.loginButtonText}
         />
         <RoundedButton
           title={'Sign Up'}
-          onPress={onLoginPress}
+          onPress={() => navigation.navigate(AppScreens.SIGN_UP_SCREEN)}
           buttonStyle={homeScreenStyles.signUpButton}
           textStyle={homeScreenStyles.signUpButtonText}
         />

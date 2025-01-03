@@ -1,5 +1,5 @@
-import {StyleSheet} from "react-native";
-import {darkTheme} from "../../theme/themes/DarkTheme.ts";
+import {StyleSheet} from 'react-native';
+import {darkTheme} from '../../theme/themes/DarkTheme.ts';
 
 const styles = StyleSheet.create({
     logoContainer: {

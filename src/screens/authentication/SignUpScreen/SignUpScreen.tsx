@@ -1,3 +1,11 @@
+import {Text, View} from 'react-native';
 
+const SignUpScreen = () => {
+  return (
+    <View>
+      <Text>SignUp Screen</Text>
+    </View>
+  );
+};
 
-const SignUpScreen = () => ()
+export {SignUpScreen};
