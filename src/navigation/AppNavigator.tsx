@@ -8,17 +8,17 @@ import {WelcomeScreen} from '../screens/WelcomeScreen/WelcomeScreen.tsx';
 
 const Stack = createNativeStackNavigator<AppScreenParamList>();
 
-export const AppNavigator = () => {
+export const AppNavigator = theme => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
+    <NavigationContainer theme={theme}>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen
-          options={{headerShown: false}}
+          // options={{headerShown: false}}
           name={AppScreens.WELCOME_SCREEN}
           component={WelcomeScreen}
         />
         <Stack.Screen
-          options={{headerShown: false}}
+          // options={{headerShown: false}}
           name={AppScreens.HOME_SCREEN}
           component={HomeScreen}
         />

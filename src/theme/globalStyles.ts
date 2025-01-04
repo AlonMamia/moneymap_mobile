@@ -5,8 +5,6 @@ export const GlobalStyles = theme => {
     container: {
       flex: 1,
       backgroundColor: theme.colors.screenCover,
-      justifyContent: 'center',
-      alignItems: 'center',
     },
     text: {
       color: theme.colors.textColor,
