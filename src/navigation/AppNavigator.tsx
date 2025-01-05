@@ -5,12 +5,31 @@ import AppScreens, {AppScreenParamList} from './AppScreens.ts';
 import {SignUpScreen} from '../screens/authentication/SignUpScreen/SignUpScreen.tsx';
 import {HomeScreen} from '../screens/HomeScreen/HomeScreen.tsx';
 import {WelcomeScreen} from '../screens/WelcomeScreen/WelcomeScreen.tsx';
+import {getNavigationTheme} from "./NavigationTheme.ts";
+import {useContext} from "react";
+import {ThemeContext} from "../theme/ThemeContext.tsx";
 
 const Stack = createNativeStackNavigator<AppScreenParamList>();
 
-export const AppNavigator = theme => {
+interface AppNavigatorProps {
+  theme: {
+    isDark: boolean;
+    colors: {
+      screenCover: string;
+      menuColor: string;
+      textColor: string;
+      PRIMARY_GREEN: string;
+      loginCover: string;
+    };
+  };
+}
+
+export const AppNavigator: React.FC<AppNavigatorProps> = () => {
+  const theme = useContext(ThemeContext);
+  const navigationTheme = getNavigationTheme(theme);
+
   return (
-    <NavigationContainer theme={theme}>
+    <NavigationContainer theme={navigationTheme}>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen
           // options={{headerShown: false}}

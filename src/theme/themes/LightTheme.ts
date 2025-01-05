@@ -1,10 +1,12 @@
 export const lightTheme = {
   isDark: false,
   colors: {
-    screenCover: '#00D09E',
-    menuColor: '#F1FFF3',
-    textColor: '#093030',
+    primary: '#00D09E',
+    background: '#00D09E',
+    card: '#F1FFF3',
+    text: '#093030',
     PRIMARY_GREEN: '#00D09E',
     loginCover: '#F1FFF3',
+    greenBar: '#0E3E3E',
   },
 };

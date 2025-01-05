@@ -4,7 +4,7 @@ export const GlobalStyles = theme => {
   return StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: theme.colors.screenCover,
+      backgroundColor: theme.colors.background,
     },
     text: {
       color: theme.colors.textColor,

@@ -40,10 +40,10 @@ export const styles = (theme) => {
             fontWeight: 'semibold',
         },
         signUpButton: {
-            backgroundColor: darkTheme.colors.textColor,
+            backgroundColor: darkTheme.colors.text,
         },
         signUpButtonText: {
-            color: lightTheme.colors.textColor,
+            color: lightTheme.colors.text,
             fontSize: 20,
             fontWeight: 'semibold',
         }
