@@ -1,31 +1,19 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {LoginScreen} from '../screens/authentication/LoginScreen/LoginScreen.tsx';
+import {LoginScreen} from '../screens/authentication/screens/LoginScreen/LoginScreen.tsx';
 import {NavigationContainer} from '@react-navigation/native';
 import AppScreens, {AppScreenParamList} from './AppScreens.ts';
-import {SignUpScreen} from '../screens/authentication/SignUpScreen/SignUpScreen.tsx';
+import {SignUpScreen} from '../screens/authentication/screens/SignUpScreen/SignUpScreen.tsx';
 import {HomeScreen} from '../screens/HomeScreen/HomeScreen.tsx';
 import {WelcomeScreen} from '../screens/WelcomeScreen/WelcomeScreen.tsx';
-import {getNavigationTheme} from "./NavigationTheme.ts";
-import {useContext} from "react";
-import {ThemeContext} from "../theme/ThemeContext.tsx";
+import {getNavigationTheme} from './NavigationTheme.ts';
+import {useTheme} from '../theme/ThemeContext.tsx';
+import {ForgotPasswordScreen} from '../screens/authentication/screens/ForgotPasswordScreen/ForgotPasswordScreen.tsx';
+import {SecurityFingerprintScreen} from '../screens/authentication/screens/SecurityFingerprintScreen/SecurityFingerprintScreen.tsx';
 
 const Stack = createNativeStackNavigator<AppScreenParamList>();
 
-interface AppNavigatorProps {
-  theme: {
-    isDark: boolean;
-    colors: {
-      screenCover: string;
-      menuColor: string;
-      textColor: string;
-      PRIMARY_GREEN: string;
-      loginCover: string;
-    };
-  };
-}
-
-export const AppNavigator: React.FC<AppNavigatorProps> = () => {
-  const theme = useContext(ThemeContext);
+export const AppNavigator = () => {
+  const theme = useTheme();
   const navigationTheme = getNavigationTheme(theme);
 
   return (
@@ -46,6 +34,14 @@ export const AppNavigator: React.FC<AppNavigatorProps> = () => {
           component={SignUpScreen}
         />
         <Stack.Screen name={AppScreens.LOG_IN_SCREEN} component={LoginScreen} />
+        <Stack.Screen
+          name={AppScreens.FORGOT_PASSWORD_SCREEN}
+          component={ForgotPasswordScreen}
+        />
+        <Stack.Screen
+          name={AppScreens.SECURITY_FINGERPRINT_SCREEN}
+          component={SecurityFingerprintScreen}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

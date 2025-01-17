@@ -1,24 +1,14 @@
-import { DefaultTheme, Theme as NavigationTheme } from '@react-navigation/native';
+import {DefaultTheme, Theme as NavigationTheme} from '@react-navigation/native';
+import {Theme} from '../types/theme.ts';
 
-interface AppTheme {
-    isDark: boolean;
-    colors: {
-        screenCover: string;
-        menuColor: string;
-        textColor: string;
-        PRIMARY_GREEN: string;
-        loginCover: string;
-    };
-}
-
-export const getNavigationTheme = (theme: AppTheme): NavigationTheme => ({
-    ...DefaultTheme,
-    dark: theme.isDark,
-    colors: {
-        ...DefaultTheme.colors,
-        background: theme.colors.screenCover, // Screen background
-        card: theme.colors.menuColor, // Header/Menu background
-        text: theme.colors.textColor, // Text color
-        primary: theme.colors.PRIMARY_GREEN, // Primary action color
-    },
+export const getNavigationTheme = (theme: Theme): NavigationTheme => ({
+  ...DefaultTheme,
+  dark: theme.isDark,
+  colors: {
+    ...DefaultTheme.colors,
+    background: theme.colors.background, // Screen background
+    card: theme.colors.menuColor, // Header/Menu background
+    text: theme.colors.text, // Text color
+    primary: theme.common.colors.PRIMARY_GREEN, // Primary action color
+  },
 });

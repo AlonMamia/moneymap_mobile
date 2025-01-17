@@ -1,12 +1,22 @@
-export const lightTheme = {
+import {Theme} from '../../types/theme.ts';
+
+export const lightTheme: Theme = {
   isDark: false,
   colors: {
     primary: '#00D09E',
     background: '#00D09E',
-    card: '#F1FFF3',
+    card: '#DFF7E2',
+    menuColor: '#F1FFF3',
     text: '#093030',
-    PRIMARY_GREEN: '#00D09E',
-    loginCover: '#F1FFF3',
-    greenBar: '#0E3E3E',
+  },
+  common: {
+    homeScreen: {
+      backgroundColor: '#F1FFF3',
+    },
+    colors: {
+      PRIMARY_GREEN: '#00D09E',
+      LIGHT_GREEN: '#DFF7E2',
+
+    },
   },
 };

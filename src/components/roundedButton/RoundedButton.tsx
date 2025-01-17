@@ -14,7 +14,7 @@ const RoundedButton = ({title, onPress, buttonStyle, textStyle}: Props) => {
     <TouchableOpacity
       style={[styles.roundedButton, buttonStyle]}
       onPress={onPress}>
-      <Text style={textStyle}>{title}</Text>
+      <Text style={[styles.roundedButtonText, textStyle]}>{title}</Text>
     </TouchableOpacity>
   );
 };

@@ -10,4 +10,8 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  roundedButtonText: {
+    fontSize: 20,
+    fontWeight: 'semibold',
+  }
 });
