@@ -1,5 +1,4 @@
 import {Text, View} from 'react-native';
-import {LayoutWithCard} from '../../../../components/LayoutWithCard/LayoutWithCard.tsx';
 import {styles} from './styles.ts';
 import React from 'react';
 import AppScreens, {AppScreenProps} from '../../../../navigation/AppScreens.ts';
@@ -10,6 +9,7 @@ import {useTheme} from '../../../../theme/ThemeContext.tsx';
 import {Link} from '@react-navigation/native';
 import Google from '../../../../assets/icons/Google.svg';
 import Facebook from '../../../../assets/icons/Facebook.svg';
+import {AuthenticationLayout} from '../../components/AuthenticationLayout.tsx';
 
 const LoginScreen: React.FC<AppScreenProps<AppScreens.LOG_IN_SCREEN>> = ({
   navigation,
@@ -29,17 +29,11 @@ const LoginScreen: React.FC<AppScreenProps<AppScreens.LOG_IN_SCREEN>> = ({
   };
 
   return (
-    <LayoutWithCard
-      theme={theme}
-      topMenuStyle={loginStyles.topMenu}
-      topMenuChildren={
-        <Text style={[globalStyles.title, loginStyles.welcomeText]}>
-          Welcome
-        </Text>
-      }
-      cardStyle={loginStyles.card}
+    <AuthenticationLayout
+      title={'Welcome'}
+      cardStyle={loginStyles.cardPadding}
       cardChildren={
-        <View style={loginStyles.cardInsideContainer}>
+        <>
           <RoundedTextInput
             theme={theme}
             inputType={'emailAddress'}
@@ -85,7 +79,7 @@ const LoginScreen: React.FC<AppScreenProps<AppScreens.LOG_IN_SCREEN>> = ({
               Don't have an account? <Link screen="signup">Sign Up</Link>
             </Text>
           </View>
-        </View>
+        </>
       }
     />
   );

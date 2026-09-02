@@ -3,25 +3,10 @@ import {Theme} from '../../../../types/theme.ts';
 
 export const styles = (theme: Theme) =>
   StyleSheet.create({
-    topMenu: {
-      flex: 1,
-    },
-    welcomeText: {
-      margin: 'auto',
-      textAlign: 'center',
-    },
-    card: {
-      flex: 3,
+    cardPadding: {
       paddingTop: 90,
       paddingBottom: 82,
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
     },
-    cardInsideContainer: {
-      width: '80%',
-    },
-
     loginButton: {
       backgroundColor: theme.common.colors.PRIMARY_GREEN,
       marginTop: 91,

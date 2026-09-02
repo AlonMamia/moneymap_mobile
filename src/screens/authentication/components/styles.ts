@@ -9,9 +9,7 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
   },
   card: {
-    flex: 3,
-    paddingTop: 90,
-    paddingBottom: 82,
+    flex: 4,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',

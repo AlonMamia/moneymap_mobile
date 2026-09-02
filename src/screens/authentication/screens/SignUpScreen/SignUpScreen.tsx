@@ -1,78 +1,79 @@
 import {Text, View} from 'react-native';
-import {LayoutWithCard} from '../../../../components/LayoutWithCard/LayoutWithCard.tsx';
 import {RoundedTextInput} from '../../../../components/RoundedTextInput/RoundedTextInput.tsx';
-import {RoundedButton} from '../../../../components/roundedButton/RoundedButton.tsx';
-import {Link} from '@react-navigation/native';
-import Facebook from '../../../../assets/icons/Facebook.svg';
-import Google from '../../../../assets/icons/Google.svg';
 import React from 'react';
 import {useTheme} from '../../../../theme/ThemeContext.tsx';
-import {styles} from "./styles.ts";
-import {useGlobalStyles} from "../../../../hooks/useGlobalStyles.ts";
+import {styles} from './styles.ts';
+import {useGlobalStyles} from '../../../../hooks/useGlobalStyles.ts';
+import AppScreens, {AppScreenProps} from '../../../../navigation/AppScreens.ts';
+import {AuthenticationLayout} from '../../components/AuthenticationLayout.tsx';
+import {RoundedButton} from "../../../../components/roundedButton/RoundedButton.tsx";
+import {Link} from "@react-navigation/native";
 
-const SignUpScreen = () => {
+const SignUpScreen: React.FC<AppScreenProps<AppScreens.SIGN_UP_SCREEN>> = ({
+  navigation,
+  route,
+}) => {
   const theme = useTheme();
   const signUpStyles = styles(theme);
   const globalStyles = useGlobalStyles();
 
   return (
-    <LayoutWithCard
-      theme={theme}
-      topMenuStyle={{flex: 1}}
-      topMenuChildren={
-        <Text style={[globalStyles.title, loginStyles.welcomeText]}>
-          Welcome
-        </Text>
-      }
-      cardStyle={loginStyles.card}
+    <AuthenticationLayout
+      title={'Create Account'}
+      cardStyle={signUpStyles.cardPadding}
       cardChildren={
-        <View style={loginStyles.cardInsideContainer}>
+      <>
+        <View style={signUpStyles.inputFieldsContainer}>
+          <RoundedTextInput
+            theme={theme}
+            inputType={'name'}
+            globalStyles={globalStyles}
+            label={'Full Name'}
+            placeholder={'John Smith'}
+          />
           <RoundedTextInput
             theme={theme}
             inputType={'emailAddress'}
             globalStyles={globalStyles}
-            label={'Username Or Email'}
+            label={'Email'}
             placeholder={'example@example.com'}
-            containerStyle={{marginBottom: 23}}
+          />
+          <RoundedTextInput
+            theme={theme}
+            inputType={'telephoneNumber'}
+            globalStyles={globalStyles}
+            label={'Mobile Number'}
+            placeholder={'+123 456 789'}
+          />
+          <RoundedTextInput
+            theme={theme}
+            inputType={'birthdate'}
+            globalStyles={globalStyles}
+            label={'Date Of Birth'}
+            placeholder={'DD / MM / YYYY'}
           />
           <RoundedTextInput
             theme={theme}
             inputType={'password'}
             globalStyles={globalStyles}
             label={'Password'}
-            placeholder={'password'}
+            placeholder={'******'}
           />
-          <View style={{alignItems: 'center'}}>
-            <RoundedButton
-              title={'Login'}
-              buttonStyle={loginStyles.loginButton}
-              onPress={loginHandler}
-            />
-            <Link screen="forgotPassword" style={globalStyles.subText}>
-              Forgot Password?
-            </Link>
-            <RoundedButton
-              title={'Sign Up'}
-              buttonStyle={loginStyles.signUpButton}
-              onPress={signUpHandler}></RoundedButton>
-            <Text
-              style={[globalStyles.subText, loginStyles.useFingerprintText]}>
-              Use <Link screen="securityFingerprint">Fingerprint</Link> To
-              Access
-            </Text>
-            <Text style={[globalStyles.paragraph, loginStyles.signUpWithText]}>
-              or sign up with
-            </Text>
-            <View style={loginStyles.iconContainer}>
-              <Facebook color={theme.colors.text} />
-              <Google color={theme.colors.text} />
-            </View>
-            <Text
-              style={[globalStyles.subText, loginStyles.dontHaveAccountText]}>
-              Don't have an account? <Link screen="signup">Sign Up</Link>
-            </Text>
-          </View>
+          <RoundedTextInput
+            theme={theme}
+            inputType={'password'}
+            globalStyles={globalStyles}
+            label={'Confirm Password'}
+            placeholder={'******'}
+          />
         </View>
+        <Text style={[globalStyles.paragraph, signUpStyles.termsAndPrivacyPolicyText]}>
+          By continuing, you agree to
+          Terms of Use and Privacy Policy.
+        </Text>
+        <RoundedButton title={'Sign Up'} buttonStyle={signUpStyles.signUpButton} onPress={() => navigation.goBack()} />
+        <Text style={[globalStyles.paragraph, signUpStyles.alreadyHaveAccountText]}>Already, have an account? <Link screen={'LoginScreen'}>Log In</Link></Text>
+      </>
       }
     />
   );

@@ -1,16 +1,21 @@
 import {LayoutWithCard} from '../../../components/LayoutWithCard/LayoutWithCard.tsx';
 import {useTheme} from '../../../theme/ThemeContext.tsx';
 import {ReactNode} from 'react';
-import {Text, View} from 'react-native';
+import {StyleProp, Text, View, ViewStyle} from 'react-native';
 import {styles} from './styles.ts';
 import {useGlobalStyles} from '../../../hooks/useGlobalStyles.ts';
 
 type Props = {
   title: string;
   cardChildren: ReactNode;
+  cardStyle?: StyleProp<ViewStyle>;
 };
 
-export const AuthenticationLayout = ({cardChildren, title}: Props) => {
+export const AuthenticationLayout = ({
+  cardChildren,
+  title,
+  cardStyle,
+}: Props) => {
   const theme = useTheme();
   const globalStyles = useGlobalStyles();
 
@@ -21,7 +26,7 @@ export const AuthenticationLayout = ({cardChildren, title}: Props) => {
       topMenuChildren={
         <Text style={[globalStyles.title, styles.title]}>{title}</Text>
       }
-      cardStyle={styles.card}
+      cardStyle={[styles.card, cardStyle]}
       cardChildren={<View style={styles.cardContent}>{cardChildren}</View>}
     />
   );
